@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
     std::vector<char> tape;
 
     InputValidator inputValidator;
-    TuringMachine turingMachine(&matrix, &tape, &dimension);
+    TuringMachine turingMachine(std::move(matrix), std::move(tape), dimension);
     char* args[4];
     bool isMatrixSetted = false;
     argument arguments[] {
@@ -95,7 +95,6 @@ int main(int argc, char* argv[]) {
                                       arguments[0].isUsed, arguments[2].isUsed))
         goto returnLabel;
 
-    turingMachine.init(true);
     turingMachine.execute();
 
     result = 0;

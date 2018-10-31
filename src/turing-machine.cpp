@@ -4,21 +4,10 @@
 
 #include "turing-machine.hpp"
 
-TuringMachine::TuringMachine(std::vector<char>* matrix, std::vector<char>* tape, int* dimension) {
-    preMatrix = matrix;
-    preTape = tape;
-    preDimension = dimension;
-}
-
-void TuringMachine::init(bool toClear = true) {
-    this->matrix = std::move(*preMatrix);
-    this->tape = std::move(*preTape);
-    this->dimension = *preDimension;
-    if (toClear) {
-        (*preMatrix).clear();
-        (*preTape).clear();
-    }
-}
+TuringMachine::TuringMachine(const std::vector<char>&& matrix, const std::vector<char>&& tape, int dimension)
+    : matrix(matrix)
+    , tape(tape)
+    , dimension(dimension) {}
 
 void TuringMachine::execute() {
     std::string str;

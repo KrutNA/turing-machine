@@ -14,18 +14,13 @@ class TuringMachine {
 public:
     std::stringstream toFile;
 
-    TuringMachine(std::vector<char>* matrix, std::vector<char>* tape, int* dimension);
-    void init(bool toClear);
+    TuringMachine(const std::vector<char>&& matrix, const std::vector<char>&& tape, int dimension);
     void execute();
 private:
     int current = 1;
     int step = 0;
     bool isEnded = false;
     int command = 1;
-
-    std::vector<char>* preMatrix;
-    std::vector<char>* preTape;
-    int* preDimension;
 
     int dimension;
     std::vector<char> matrix;
